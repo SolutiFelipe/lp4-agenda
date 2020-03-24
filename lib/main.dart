@@ -76,13 +76,19 @@ class Editor extends StatelessWidget {
   }
 }
 
-class ListaPessoas extends StatelessWidget {
+class ListaPessoas extends StatefulWidget {
   List<Pessoa> _pessoas = List();
 
   @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return ListaPessoasState();
+  }
+}
+
+class ListaPessoasState extends State<ListaPessoas> {
+  @override
   Widget build(BuildContext context) {
-    this._pessoas.add(Pessoa("Bruce Banner", "Cientista"));
-    this._pessoas.add(Pessoa("Bruce Wayne", "Empresário"));
 
     // TODO: implement build
     return Scaffold(
@@ -90,29 +96,30 @@ class ListaPessoas extends StatelessWidget {
         title: Text("Agenda"),
       ),
       body: ListView.builder(
-        itemCount: this._pessoas.length,
+        itemCount: widget._pessoas.length,
         itemBuilder: (context, indice){
-          Pessoa pessoa = this._pessoas[indice];
+          Pessoa pessoa = widget._pessoas[indice];
           return ItemPessoa(pessoa);
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Future<Pessoa> future = Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) {
-              return FormularioPessoas();
-          })
+              context,
+              MaterialPageRoute(builder: (context) {
+                return FormularioPessoas();
+              })
           );
           future.then((pessoa) {
-            this._pessoas.add(pessoa);
-            this._pessoas.forEach((element) => debugPrint("$element"));
+            widget._pessoas.add(pessoa);
+            widget._pessoas.forEach((element) => debugPrint("$element"));
           });
         },
         child: const Icon(Icons.add),
       ),
     );
   }
+
 }
 
 class ItemPessoa extends StatelessWidget {
