@@ -8,39 +8,58 @@ import 'package:flutter_app/screens/item_pessoa.dart';
 import 'lista_pessoas.dart';
 
 class ListaPessoasState extends State<ListaPessoas> {
-  List<Pessoa> _pessoas = List();
-
   @override
   Widget build(BuildContext context) {
-
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text("Agenda"),
       ),
-      body: ListView.builder(
-        itemCount: this._pessoas.length,
-        itemBuilder: (context, indice){
-          Pessoa pessoa = this._pessoas[indice];
-          return ItemPessoa(pessoa);
+      body: FutureBuilder<List<Pessoa>>(
+        initialData: List(),
+        future: Future.delayed(Duration(seconds: 2)).then((value) => findAll()),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              break;
+            case ConnectionState.waiting:
+              return Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    CircularProgressIndicator(),
+                    Text("Carregando"),
+                  ],
+                ),
+              );
+              break;
+            case ConnectionState.active:
+              break;
+            case ConnectionState.done:
+              List<Pessoa> pessoas = snapshot.data;
+
+              return ListView.builder(
+                itemCount: pessoas.length,
+                itemBuilder: (context, indice) {
+                  Pessoa pessoa = pessoas[indice];
+                  return ItemPessoa(pessoa);
+                },
+              );
+              break;
+          }
+          return null;
+
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Future<Pessoa> future = Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return FormularioPessoas();
-              })
-          );
-          future.then((pessoa) {
-            this._pessoas.add(pessoa);
-            this._pessoas.forEach((element) => debugPrint("$element"));
-          });
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return FormularioPessoas();
+          }));
         },
         child: const Icon(Icons.add),
       ),
     );
   }
-
 }
