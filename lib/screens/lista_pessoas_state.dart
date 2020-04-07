@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/database/app_database.dart';
+import 'package:flutter_app/database/dao/pessoa_dao.dart';
 import 'package:flutter_app/models/pessoa.dart';
 import 'package:flutter_app/screens/formulario_pessoa.dart';
 import 'package:flutter_app/screens/item_pessoa.dart';
@@ -10,6 +10,9 @@ import 'lista_pessoas.dart';
 class ListaPessoasState extends State<ListaPessoas> {
   @override
   Widget build(BuildContext context) {
+
+    PessoaDAO _dao = PessoaDAO();
+
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -17,7 +20,7 @@ class ListaPessoasState extends State<ListaPessoas> {
       ),
       body: FutureBuilder<List<Pessoa>>(
         initialData: List(),
-        future: Future.delayed(Duration(seconds: 2)).then((value) => findAll()),
+        future: Future.delayed(Duration(seconds: 2)).then((value) => _dao.findAll()),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:

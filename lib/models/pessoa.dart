@@ -1,24 +1,24 @@
 class Pessoa {
-  String _nome;
-  String _profissao;
-  int _id;
+  String nome;
+  String profissao;
+  int id;
 
-  Pessoa(this._id, this._nome, this._profissao);
+  Pessoa({this.id, this.nome, this.profissao});
 
   @override
   String toString() {
-    return 'Pessoa{_id: $_id, _nome: $_nome, _profissao: $_profissao}';
+    return 'Pessoa{_id: $id, _nome: $nome, _profissao: $profissao}';
   }
 
   String getNome() {
-    return this._nome;
+    return this.nome;
   }
 
   String getProfissao() {
-    return this._profissao;
+    return this.profissao;
   }
 
   int getId() {
-    return this._id;
+    return this.id;
   }
 }
