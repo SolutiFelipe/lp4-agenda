@@ -4,7 +4,6 @@ import 'package:sqflite/sqflite.dart';
 import '../app_database.dart';
 
 class PessoaDAO {
-
   static const tableName = "pessoa";
   static const createTable = "CREATE TABLE $tableName( "
       "id INTEGER PRIMARY KEY, "
@@ -35,5 +34,4 @@ class PessoaDAO {
     }
     return pessoas;
   }
-
 }

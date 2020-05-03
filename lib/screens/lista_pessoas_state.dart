@@ -10,7 +10,6 @@ import 'lista_pessoas.dart';
 class ListaPessoasState extends State<ListaPessoas> {
   @override
   Widget build(BuildContext context) {
-
     PessoaDAO _dao = PessoaDAO();
 
     // TODO: implement build
@@ -20,7 +19,8 @@ class ListaPessoasState extends State<ListaPessoas> {
       ),
       body: FutureBuilder<List<Pessoa>>(
         initialData: List(),
-        future: Future.delayed(Duration(seconds: 2)).then((value) => _dao.findAll()),
+        future: Future.delayed(Duration(seconds: 2))
+            .then((value) => _dao.findAll()),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -52,7 +52,6 @@ class ListaPessoasState extends State<ListaPessoas> {
               break;
           }
           return null;
-
         },
       ),
       floatingActionButton: FloatingActionButton(

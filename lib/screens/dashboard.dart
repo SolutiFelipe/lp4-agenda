@@ -1,15 +1,30 @@
 import 'package:first_project/screens/lista_pessoas.dart';
 import 'package:first_project/screens/menu_item.dart';
+import 'package:first_project/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class Dashboard extends StatelessWidget {
+
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Dashboard'),
+        elevation: 0.0,
+        actions: <Widget>[
+          FlatButton.icon(
+            textColor: Colors.white,
+            icon: Icon(Icons.person_outline),
+            label: Text("Logout"),
+            onPressed:() async {
+              await _auth.singOut();
+            },
+          ),
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,6 +52,7 @@ class Dashboard extends StatelessWidget {
       ),
     );
   }
+
   void _showContactsListDB(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -47,9 +63,7 @@ class Dashboard extends StatelessWidget {
 
   void _showContactsListAPI(BuildContext context) {
     Navigator.of(context).push(
-      MaterialPageRoute(
-
-      ),
+      MaterialPageRoute(),
     );
   }
 }

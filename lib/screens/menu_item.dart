@@ -7,10 +7,10 @@ class MenuItem extends StatelessWidget {
   final Function onClick;
 
   MenuItem(
-      this._name,
-      this._icon, {
-        @required this.onClick,
-      });
+    this._name,
+    this._icon, {
+    @required this.onClick,
+  });
 
   @override
   Widget build(BuildContext context) {
