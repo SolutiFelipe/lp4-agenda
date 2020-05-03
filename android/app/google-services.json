@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "145915462645",
+    "firebase_url": "https://agenda-f8041.firebaseio.com",
+    "project_id": "agenda-f8041",
+    "storage_bucket": "agenda-f8041.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145915462645:android:d5f07d0c753c7ab97a56bc",
+        "android_client_info": {
+          "package_name": "unialfa.com.br.first_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145915462645-q237ibe1ntdbuvrll6elq9p9anp6edma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIK_A7OuJscEUy0w_jkyUIQ-AZeJkwHIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145915462645-q237ibe1ntdbuvrll6elq9p9anp6edma.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

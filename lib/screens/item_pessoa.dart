@@ -1,6 +1,6 @@
+import 'package:first_project/models/pessoa.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/models/pessoa.dart';
 
 class ItemPessoa extends StatelessWidget {
   final Pessoa _pessoa;

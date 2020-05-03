@@ -1,6 +1,7 @@
-import 'package:flutter_app/models/pessoa.dart';
+import 'package:first_project/models/pessoa.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:flutter_app/database/app_database.dart';
+
+import '../app_database.dart';
 
 class PessoaDAO {
 

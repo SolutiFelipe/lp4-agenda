@@ -1,10 +1,10 @@
+import 'package:first_project/database/dao/pessoa_dao.dart';
+import 'package:first_project/models/pessoa.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/database/dao/pessoa_dao.dart';
-import 'package:flutter_app/models/pessoa.dart';
-import 'package:flutter_app/screens/formulario_pessoa.dart';
-import 'package:flutter_app/screens/item_pessoa.dart';
 
+import 'formulario_pessoa.dart';
+import 'item_pessoa.dart';
 import 'lista_pessoas.dart';
 
 class ListaPessoasState extends State<ListaPessoas> {
