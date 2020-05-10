@@ -6,8 +6,13 @@ import 'package:first_project/web_client/web_client.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ListaPessoasApi extends StatelessWidget{
+class ListaPessoasApi extends StatefulWidget{
 
+  @override
+  _ListaPessoasApiState createState() => _ListaPessoasApiState();
+}
+
+class _ListaPessoasApiState extends State<ListaPessoasApi> {
   List<Pessoa> pessoas;
 
   @override
@@ -54,5 +59,4 @@ class ListaPessoasApi extends StatelessWidget{
       ),
     );
   }
-
 }
