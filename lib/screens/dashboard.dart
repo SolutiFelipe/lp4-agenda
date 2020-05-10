@@ -1,4 +1,5 @@
 import 'package:first_project/screens/lista_pessoas.dart';
+import 'package:first_project/screens/lista_pessoas_api.dart';
 import 'package:first_project/screens/menu_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,9 @@ class Dashboard extends StatelessWidget {
 
   void _showContactsListAPI(BuildContext context) {
     Navigator.of(context).push(
-      MaterialPageRoute(),
+      MaterialPageRoute(
+        builder: (context) => ListaPessoasApi(),
+      ),
     );
   }
 }
