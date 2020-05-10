@@ -1,6 +1,6 @@
-import 'package:first_project/screens/lista_pessoas.dart';
-import 'package:first_project/screens/lista_pessoas_api.dart';
-import 'package:first_project/screens/menu_item.dart';
+import 'package:first_project/screens/database/lista_pessoas.dart';
+import 'package:first_project/screens/api/lista_pessoas_api.dart';
+import 'package:first_project/screens/util/menu_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
