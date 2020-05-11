@@ -1,5 +1,4 @@
 import 'package:first_project/screens/dashboard.dart';
-import 'package:first_project/screens/database/lista_pessoas.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(AgendaApp());
