@@ -1,12 +1,14 @@
 import 'package:first_project/screens/database/lista_pessoas.dart';
 import 'package:first_project/screens/api/lista_pessoas_api.dart';
 import 'package:first_project/screens/util/menu_item.dart';
+import 'package:first_project/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class Dashboard extends StatelessWidget {
 
+  AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +20,8 @@ class Dashboard extends StatelessWidget {
             textColor: Colors.white,
             icon: Icon(Icons.person_outline),
             label: Text("Logout"),
-            onPressed:()  {
-
+            onPressed:()  async {
+              await _auth.signOut();
             },
           ),
         ],
