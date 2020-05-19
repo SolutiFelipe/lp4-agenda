@@ -1,31 +1,21 @@
-import 'package:first_project/models/user.dart';
 import 'package:first_project/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SingIn extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _SingInState();
+  State<StatefulWidget> createState() => _RegisterState();
+
 }
 
-class _SingInState extends State<SingIn> {
+class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login"),
-        actions: <Widget>[
-          FlatButton.icon(
-            onPressed: () {
-
-            },
-            icon: Icon(Icons.person),
-            label: Text("Registrar"),
-            textColor: Colors.white,
-          )
-        ],
+        title: Text("Registrar"),
       ),
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -62,7 +52,7 @@ class _SingInState extends State<SingIn> {
                 height: 16.0,
               ),
               RaisedButton(
-                child: Text("Login"),
+                child: Text("Cadastrar"),
                 onPressed: () async {},
               )
             ],
@@ -71,4 +61,5 @@ class _SingInState extends State<SingIn> {
       ),
     );
   }
+
 }
