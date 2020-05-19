@@ -11,9 +11,6 @@ class Wrapper extends StatelessWidget {
 
     final user = Provider.of<User>(context);
 
-    /*retornar dashboard se logado ou authenticate se não logado*/
-    // TODO: implement build
-
     if(user != null) {
       return Dashboard();
     }

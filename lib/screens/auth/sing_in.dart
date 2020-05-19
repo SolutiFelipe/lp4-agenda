@@ -9,39 +9,73 @@ class SingIn extends StatefulWidget {
 }
 
 class _SingInState extends State<SingIn> {
-
   AuthService _auth = AuthService();
+
+  String email = "";
+  String password = "";
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Login"),
+      appBar: AppBar(
+        title: Text("Login"),
+        actions: <Widget>[
+          FlatButton.icon(
+            onPressed: () {
+
+            },
+            icon: Icon(Icons.person),
+            label: Text("Registrar"),
+            textColor: Colors.white,
+          )
+        ],
+      ),
+      body: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 48.0,
         ),
-        body: Center(
+        child: Form(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset('images/sing.png'),
+              SizedBox(
+                height: 16.0,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                    labelText: "E-mail:"
+                ),
+                onChanged: (val) {
+                  setState(() => email = val);
+                },
+              ),
+              SizedBox(
+                height: 16.0,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                    labelText: "Senha:"
+                ),
+                obscureText: true,
+                onChanged: (val) {
+                  setState(() => password = val);
+                },
+              ),
+              SizedBox(
+                height: 16.0,
               ),
               RaisedButton(
-                child: Text("Sing In"),
+                child: Text("Login"),
                 onPressed: () async {
-                  User user = await _auth.singInAnon();
-                  if(user == null) {
-                    print("error ao logar");
-                  } else {
-                    print("Logado");
-                    print(user);
-                  }
+                  print(email);
+                  print(password);
                 },
               )
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
