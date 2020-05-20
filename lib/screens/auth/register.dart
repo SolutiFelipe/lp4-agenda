@@ -5,10 +5,14 @@ import 'package:flutter/material.dart';
 class Register extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _RegisterState();
-
 }
 
 class _RegisterState extends State<Register> {
+  String email = "";
+  String password = "";
+  AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+  String error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -23,29 +27,30 @@ class _RegisterState extends State<Register> {
           horizontal: 48.0,
         ),
         child: Form(
+          key: _formKey,
           child: Column(
             children: <Widget>[
               SizedBox(
                 height: 16.0,
               ),
               TextFormField(
-                decoration: const InputDecoration(
-                    labelText: "E-mail:"
-                ),
+                validator: (val) => val.isEmpty ? "Insira o Email" : null,
+                decoration: const InputDecoration(labelText: "E-mail:"),
                 onChanged: (val) {
-
+                  setState(() => email = val);
                 },
               ),
               SizedBox(
                 height: 16.0,
               ),
               TextFormField(
-                decoration: const InputDecoration(
-                    labelText: "Senha:"
-                ),
+                validator: (val) => val.length < 8
+                    ? "Senha deve ter no mínimo 8 caracteres"
+                    : null,
+                decoration: const InputDecoration(labelText: "Senha:"),
                 obscureText: true,
                 onChanged: (val) {
-
+                  setState(() => password = val);
                 },
               ),
               SizedBox(
@@ -53,7 +58,28 @@ class _RegisterState extends State<Register> {
               ),
               RaisedButton(
                 child: Text("Cadastrar"),
-                onPressed: () async {},
+                onPressed: () async {
+                  if (_formKey.currentState.validate()) {
+                    dynamic result = await _auth.registerWithEmailAndPassword(
+                        email, password);
+
+                    Navigator.pop(context);
+
+                    if (result == null) {
+                      setState(() => error = "Insira um email válido");
+                    }
+                  }
+                },
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              Text(
+                error,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.red,
+                ),
               )
             ],
           ),
@@ -61,5 +87,4 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
-
 }

@@ -1,5 +1,6 @@
 import 'package:first_project/screens/database/lista_pessoas.dart';
 import 'package:first_project/screens/api/lista_pessoas_api.dart';
+import 'package:first_project/screens/firestore/lista_pessoas_firestore.dart';
 import 'package:first_project/screens/util/menu_item.dart';
 import 'package:first_project/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,6 +49,25 @@ class Dashboard extends StatelessWidget {
               ],
             ),
           ),
+          Container(
+            height: 120,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                MenuItem(
+                  'Contacts Firestore',
+                  Icons.backup,
+                  onClick: () => _showContactsListFirestore(context),
+                ),
+                MenuItem(
+                  '',
+                  null,
+                  onClick: () => null,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -65,6 +85,14 @@ class Dashboard extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => ListaPessoasApi(),
+      ),
+    );
+  }
+
+  void _showContactsListFirestore(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => ListaPessoasFirestore(),
       ),
     );
   }
