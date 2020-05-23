@@ -62,4 +62,14 @@ class AuthService {
       return null;
     }
   }
+
+  Future recoverPasword(String email) async {
+    try{
+      var result = await _auth.sendPasswordResetEmail(email: email);
+
+    } catch(exception) {
+      print(exception.toString());
+      return null;
+    }
+  }
 }
