@@ -9,7 +9,7 @@ class FormPerson extends StatelessWidget {
   final TextEditingController _campoNome = TextEditingController();
   final TextEditingController _campoProfissao = TextEditingController();
 
-  final PessoaDAO _dao = PessoaDAO();
+  final PersonDAO _dao = PersonDAO();
 
   @override
   Widget build(BuildContext context) {

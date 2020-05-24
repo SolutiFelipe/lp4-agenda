@@ -11,7 +11,7 @@ import 'list_person.dart';
 class ListPersonState extends State<ListPerson> {
   @override
   Widget build(BuildContext context) {
-    PessoaDAO _dao = PessoaDAO();
+    PersonDAO _dao = PersonDAO();
 
     // TODO: implement build
     return Scaffold(
