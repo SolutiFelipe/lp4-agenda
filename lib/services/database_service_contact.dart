@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_project/models/pessoa.dart';
 
-class DatabaseService {
+class DatabaseServiceContact {
   String uid;
 
-  DatabaseService({this.uid});
+  DatabaseServiceContact({this.uid});
 
   final CollectionReference contactsCollection =
       Firestore.instance.collection('contacts');

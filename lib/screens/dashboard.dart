@@ -61,8 +61,8 @@ class Dashboard extends StatelessWidget {
                   onClick: () => _showContactsListFirestore(context),
                 ),
                 MenuItem(
-                  '',
-                  null,
+                  'Events',
+                  Icons.calendar_today,
                   onClick: () => null,
                 ),
               ],

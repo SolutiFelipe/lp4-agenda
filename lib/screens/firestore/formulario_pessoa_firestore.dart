@@ -1,6 +1,6 @@
 import 'package:first_project/database/dao/pessoa_dao.dart';
 import 'package:first_project/models/pessoa.dart';
-import 'package:first_project/services/database_service.dart';
+import 'package:first_project/services/database_service_contact.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class FormularioPessoasFirestore extends StatelessWidget {
   final TextEditingController _campoNome = TextEditingController();
   final TextEditingController _campoProfissao = TextEditingController();
 
-  final DatabaseService service = DatabaseService();
+  final DatabaseServiceContact service = DatabaseServiceContact();
 
   @override
   Widget build(BuildContext context) {

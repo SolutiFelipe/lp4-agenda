@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_project/models/pessoa.dart';
 import 'package:first_project/screens/firestore/formulario_pessoa_firestore.dart';
 import 'package:first_project/screens/firestore/lista_pessoas_stream.dart';
-import 'package:first_project/services/database_service.dart';
+import 'package:first_project/services/database_service_contact.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +18,7 @@ class _ListaPessoasFirestoreState extends State<ListaPessoasFirestore> {
   Widget build(BuildContext context) {
 
     return StreamProvider<List<Pessoa>>.value(
-      value: DatabaseService().contacts,
+      value: DatabaseServiceContact().contacts,
       child: Scaffold(
         appBar: AppBar(
           title: Text("Agenda"),
