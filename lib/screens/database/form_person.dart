@@ -1,13 +1,15 @@
-import 'package:first_project/models/pessoa.dart';
-import 'package:first_project/web_client/web_client.dart';
+import 'package:first_project/database/dao/person_dao.dart';
+import 'package:first_project/models/person.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../util/editor.dart';
 
-class FormularioPessoasAPI extends StatelessWidget {
+class FormPerson extends StatelessWidget {
   final TextEditingController _campoNome = TextEditingController();
   final TextEditingController _campoProfissao = TextEditingController();
+
+  final PessoaDAO _dao = PessoaDAO();
 
   @override
   Widget build(BuildContext context) {
@@ -44,17 +46,12 @@ class FormularioPessoasAPI extends StatelessWidget {
     String nome = this._campoNome.text;
     String profissao = this._campoProfissao.text;
     if (nome.isNotEmpty && profissao.isNotEmpty) {
-      Pessoa pessoa = Pessoa(
+      Person pessoa = Person(
         nome: nome,
         profissao: profissao,
       );
-      save(pessoa).then((response) {
-        if(response) {
-          Navigator.pop(context, pessoa);
-        } else {
-          print("Erro ao salvar pessoa");
-        }
-
+      _dao.save(pessoa).then((id) {
+        Navigator.pop(context);
       });
     }
   }

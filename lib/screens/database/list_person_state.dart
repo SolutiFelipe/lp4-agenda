@@ -1,30 +1,27 @@
-import 'package:first_project/models/pessoa.dart';
-import 'package:first_project/screens/api/formulario_pessoa_api.dart';
-import 'package:first_project/screens/util/item_pessoa.dart';
+import 'package:first_project/database/dao/person_dao.dart';
+import 'package:first_project/models/person.dart';
 import 'package:first_project/screens/util/progress.dart';
-import 'package:first_project/web_client/web_client.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ListaPessoasApi extends StatefulWidget{
+import 'form_person.dart';
+import '../util/item_person.dart';
+import 'list_person.dart';
 
-  @override
-  _ListaPessoasApiState createState() => _ListaPessoasApiState();
-}
-
-class _ListaPessoasApiState extends State<ListaPessoasApi> {
-  List<Pessoa> pessoas;
-
+class ListPersonState extends State<ListPerson> {
   @override
   Widget build(BuildContext context) {
+    PessoaDAO _dao = PessoaDAO();
+
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text("Agenda"),
       ),
-      body: FutureBuilder<List<Pessoa>>(
+      body: FutureBuilder<List<Person>>(
         initialData: List(),
-        future: findAll(),
+        future: Future.delayed(Duration(seconds: 2))
+            .then((value) => _dao.findAll()),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -35,12 +32,12 @@ class _ListaPessoasApiState extends State<ListaPessoasApi> {
             case ConnectionState.active:
               break;
             case ConnectionState.done:
-              this.pessoas = snapshot.data;
+              List<Person> pessoas = snapshot.data;
 
               return ListView.builder(
-                itemCount: this.pessoas.length,
+                itemCount: pessoas.length,
                 itemBuilder: (context, indice) {
-                  Pessoa pessoa = this.pessoas[indice];
+                  Person pessoa = pessoas[indice];
                   return ItemPessoa(pessoa);
                 },
               );
@@ -52,8 +49,8 @@ class _ListaPessoasApiState extends State<ListaPessoasApi> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return FormularioPessoasAPI();
-          })).then((pessoa) => this.pessoas.add(pessoa));
+            return FormPerson();
+          }));
         },
         child: const Icon(Icons.add),
       ),

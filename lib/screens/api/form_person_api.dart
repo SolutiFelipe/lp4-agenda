@@ -1,16 +1,13 @@
-import 'package:first_project/database/dao/pessoa_dao.dart';
-import 'package:first_project/models/pessoa.dart';
-import 'package:first_project/services/database_service_contact.dart';
+import 'package:first_project/models/person.dart';
+import 'package:first_project/web_client/web_client.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../util/editor.dart';
 
-class FormularioPessoasFirestore extends StatelessWidget {
+class FormPersonApi extends StatelessWidget {
   final TextEditingController _campoNome = TextEditingController();
   final TextEditingController _campoProfissao = TextEditingController();
-
-  final DatabaseServiceContact service = DatabaseServiceContact();
 
   @override
   Widget build(BuildContext context) {
@@ -43,17 +40,22 @@ class FormularioPessoasFirestore extends StatelessWidget {
     );
   }
 
-  void _criarPessoa(BuildContext context) async{
+  void _criarPessoa(BuildContext context) {
     String nome = this._campoNome.text;
     String profissao = this._campoProfissao.text;
     if (nome.isNotEmpty && profissao.isNotEmpty) {
-      Pessoa pessoa = Pessoa(
+      Person pessoa = Person(
         nome: nome,
         profissao: profissao,
       );
+      save(pessoa).then((response) {
+        if(response) {
+          Navigator.pop(context, pessoa);
+        } else {
+          print("Erro ao salvar pessoa");
+        }
 
-      await service.updateDatabase(pessoa);
-       Navigator.pop(context);
+      });
     }
   }
 }

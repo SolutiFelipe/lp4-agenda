@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:first_project/models/pessoa.dart';
+import 'package:first_project/models/person.dart';
 import 'package:first_project/web_client/logging_interceptor.dart';
 import 'package:http/http.dart';
 import 'package:http_interceptor/http_client_with_interceptor.dart';
@@ -10,17 +10,17 @@ const baseURL = "http://172.16.240.2/contacts";
 final Client client =
 HttpClientWithInterceptor.build(interceptors: [LoggingInterceptor()]);
 
-Future<List<Pessoa>> findAll() async {
+Future<List<Person>> findAll() async {
   Map<String, String> headers = Map();
   headers['Accept'] = "application/json";
 
   Response response = await client.get(baseURL, headers: headers);
 
   final List<dynamic> decodeJson = jsonDecode(response.body);
-  List<Pessoa> pessoas = List();
+  List<Person> pessoas = List();
 
   for (Map<String, dynamic> element in decodeJson) {
-    Pessoa pessoa = Pessoa(
+    Person pessoa = Person(
       id: int.tryParse(element['id']),
       nome: element['name'],
       profissao: element['professional'],
@@ -31,7 +31,7 @@ Future<List<Pessoa>> findAll() async {
   return pessoas;
 }
 
-Future<bool> save(Pessoa pessoa) async {
+Future<bool> save(Person pessoa) async {
   Map<String, String> headers = Map();
   headers['Content-Type'] = "application/json";
   headers['Accept'] = "application/json";

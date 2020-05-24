@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:first_project/models/pessoa.dart';
-import 'package:first_project/screens/util/item_pessoa.dart';
+import 'package:first_project/models/person.dart';
+import 'package:first_project/screens/util/item_person.dart';
 import 'package:first_project/screens/util/progress.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-class ListaPessoasStream extends StatefulWidget {
+class ListPersonStream extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _ListaPessoasStreamState();
+  State<StatefulWidget> createState() => _ListPersonStreamState();
 }
 
-class _ListaPessoasStreamState extends State<ListaPessoasStream> {
+class _ListPersonStreamState extends State<ListPersonStream> {
   @override
   Widget build(BuildContext context) {
     /*1º iteração
@@ -27,7 +27,7 @@ class _ListaPessoasStreamState extends State<ListaPessoasStream> {
       print(doc.data);
     }*/
 
-    final pessoas = Provider.of<List<Pessoa>>(context);
+    final pessoas = Provider.of<List<Person>>(context);
 
     if (pessoas == null) {
       return Progress();
@@ -35,7 +35,7 @@ class _ListaPessoasStreamState extends State<ListaPessoasStream> {
       return ListView.builder(
         itemCount: pessoas.length,
         itemBuilder: (context, index) {
-          Pessoa pessoa = pessoas[index];
+          Person pessoa = pessoas[index];
           return ItemPessoa(pessoa);
         },
       );

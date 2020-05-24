@@ -1,6 +1,6 @@
-import 'package:first_project/screens/database/lista_pessoas.dart';
-import 'package:first_project/screens/api/lista_pessoas_api.dart';
-import 'package:first_project/screens/firestore/lista_pessoas_firestore.dart';
+import 'package:first_project/screens/database/list_person.dart';
+import 'package:first_project/screens/api/list_person_api.dart';
+import 'package:first_project/screens/firestore/list_person_firestore.dart';
 import 'package:first_project/screens/util/menu_item.dart';
 import 'package:first_project/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -63,7 +63,7 @@ class Dashboard extends StatelessWidget {
                 MenuItem(
                   'Events',
                   Icons.calendar_today,
-                  onClick: () => null,
+                  onClick: () => _showEventsList(context),
                 ),
               ],
             ),
@@ -76,7 +76,7 @@ class Dashboard extends StatelessWidget {
   void _showContactsListDB(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => ListaPessoas(),
+        builder: (context) => ListPerson(),
       ),
     );
   }
@@ -84,7 +84,7 @@ class Dashboard extends StatelessWidget {
   void _showContactsListAPI(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => ListaPessoasApi(),
+        builder: (context) => ListPersonApi(),
       ),
     );
   }
@@ -92,7 +92,15 @@ class Dashboard extends StatelessWidget {
   void _showContactsListFirestore(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => ListaPessoasFirestore(),
+        builder: (context) => ListPersonFirestore(),
+      ),
+    );
+  }
+
+  void _showEventsList(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => null,
       ),
     );
   }

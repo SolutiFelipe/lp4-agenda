@@ -1,9 +1,9 @@
-import 'package:first_project/models/pessoa.dart';
+import 'package:first_project/models/person.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ItemPessoa extends StatelessWidget {
-  final Pessoa _pessoa;
+  final Person _pessoa;
 
   ItemPessoa(this._pessoa);
 

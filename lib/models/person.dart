@@ -1,9 +1,9 @@
-class Pessoa {
+class Person {
   String nome;
   String profissao;
   int id;
 
-  Pessoa({this.id, this.nome, this.profissao});
+  Person({this.id, this.nome, this.profissao});
 
   @override
   String toString() {

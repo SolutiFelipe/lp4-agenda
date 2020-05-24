@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:first_project/models/pessoa.dart';
+import 'package:first_project/models/person.dart';
 
 class DatabaseServiceContact {
   String uid;
@@ -9,24 +9,25 @@ class DatabaseServiceContact {
   final CollectionReference contactsCollection =
       Firestore.instance.collection('contacts');
 
-  Future updateDatabase(Pessoa pessoa) async {
+  Future updateDatabase(Person pessoa) async {
     await contactsCollection
         .document(uid)
         .setData({'name': pessoa.getNome(), 'profession': pessoa.getProfissao()});
   }
 
-  List<Pessoa> _pessoasListFromSnapshot(QuerySnapshot snapshot) {
+  List<Person> _pessoasListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
-      return Pessoa(
+      return Person(
         profissao: doc.data['profession'],
         nome: doc.data['name'],
       );
     }).toList();
   }
 
-  Stream<List<Pessoa>> get contacts {
+  Stream<List<Person>> get contacts {
     return contactsCollection
         .snapshots()
         .map((QuerySnapshot snapshot) => _pessoasListFromSnapshot(snapshot));
   }
+
 }

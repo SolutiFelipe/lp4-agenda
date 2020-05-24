@@ -1,4 +1,4 @@
-import 'package:first_project/models/pessoa.dart';
+import 'package:first_project/models/person.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../app_database.dart';
@@ -10,7 +10,7 @@ class PessoaDAO {
       "nome TEXT, "
       "profissao TEXT)";
 
-  Future<int> save(Pessoa pessoa) async {
+  Future<int> save(Person pessoa) async {
     Database db = await createDatabase(createTable);
 
     final Map<String, dynamic> pessoaMap = Map();
@@ -20,13 +20,13 @@ class PessoaDAO {
     return db.insert(tableName, pessoaMap);
   }
 
-  Future<List<Pessoa>> findAll() async {
+  Future<List<Person>> findAll() async {
     Database db = await createDatabase(createTable);
     List<Map<String, dynamic>> maps = await db.query(tableName);
-    List<Pessoa> pessoas = List();
+    List<Person> pessoas = List();
 
     for (Map<String, dynamic> map in maps) {
-      pessoas.add(Pessoa(
+      pessoas.add(Person(
         id: map['id'],
         nome: map['nome'],
         profissao: map['profissao'],
