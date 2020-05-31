@@ -10,9 +10,8 @@ class DatabaseServiceContact {
       Firestore.instance.collection('contacts');
 
   Future updateDatabase(Person pessoa) async {
-    await contactsCollection
-        .document(uid)
-        .setData({'name': pessoa.getNome(), 'profession': pessoa.getProfissao()});
+    await contactsCollection.document(uid).setData(
+        {'name': pessoa.getNome(), 'profession': pessoa.getProfissao()});
   }
 
   List<Person> _pessoasListFromSnapshot(QuerySnapshot snapshot) {
@@ -24,10 +23,24 @@ class DatabaseServiceContact {
     }).toList();
   }
 
+  List<String> _nameListFromSnapshot(QuerySnapshot snapshot) {
+    List<String> names = List();
+    snapshot.documents.forEach(
+      (doc) => names.add(doc['name']),
+    );
+
+    return names;
+  }
+
+  Stream<List<String>> get contactsName {
+    return contactsCollection
+        .snapshots()
+        .map((QuerySnapshot snapshot) => _nameListFromSnapshot(snapshot));
+  }
+
   Stream<List<Person>> get contacts {
     return contactsCollection
         .snapshots()
         .map((QuerySnapshot snapshot) => _pessoasListFromSnapshot(snapshot));
   }
-
 }

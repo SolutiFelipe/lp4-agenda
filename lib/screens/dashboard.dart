@@ -1,5 +1,6 @@
 import 'package:first_project/screens/database/list_person.dart';
 import 'package:first_project/screens/api/list_person_api.dart';
+import 'package:first_project/screens/event/list_event.dart';
 import 'package:first_project/screens/firestore/list_person_firestore.dart';
 import 'package:first_project/screens/util/menu_item.dart';
 import 'package:first_project/services/auth_service.dart';
@@ -100,7 +101,7 @@ class Dashboard extends StatelessWidget {
   void _showEventsList(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => null,
+        builder: (context) => ListEvent(),
       ),
     );
   }

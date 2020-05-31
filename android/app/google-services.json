@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "145915462645",
-    "firebase_url": "https://agenda-f8041.firebaseio.com",
-    "project_id": "agenda-f8041",
-    "storage_bucket": "agenda-f8041.appspot.com"
+    "project_number": "647375007224",
+    "firebase_url": "https://agenda2-a8df5.firebaseio.com",
+    "project_id": "agenda2-a8df5",
+    "storage_bucket": "agenda2-a8df5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:145915462645:android:d5f07d0c753c7ab97a56bc",
+        "mobilesdk_app_id": "1:647375007224:android:5ae986fe5efb6746cc7a0d",
         "android_client_info": {
           "package_name": "unialfa.com.br.first_project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "145915462645-q237ibe1ntdbuvrll6elq9p9anp6edma.apps.googleusercontent.com",
+          "client_id": "647375007224-mgimpdgld4euopjh2ldsek3k68oniun0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAIK_A7OuJscEUy0w_jkyUIQ-AZeJkwHIM"
+          "current_key": "AIzaSyBbgxo-ot_ISXuI8gONA--ASPkjAGbcv-A"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "145915462645-q237ibe1ntdbuvrll6elq9p9anp6edma.apps.googleusercontent.com",
+              "client_id": "647375007224-mgimpdgld4euopjh2ldsek3k68oniun0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
