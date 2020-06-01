@@ -4,14 +4,15 @@ class Event {
 
   String name;
   String data;
-  String localizacao;
+  String latitude;
+  String longitude;
   String time;
 
-  Event({this.name, this.data, this.localizacao, this.time});
+  Event({this.name, this.data, this.latitude, this.longitude, this.time});
 
   @override
   String toString() {
-    return 'Event{name: $name, data: $data, localizacao: $localizacao, time: $time}';
+    return 'Event{name: $name, data: $data, latitude: $latitude, time: $time}';
   }
 
 }
