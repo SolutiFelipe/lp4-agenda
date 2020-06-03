@@ -12,7 +12,7 @@ class Event {
 
   @override
   String toString() {
-    return 'Event{name: $name, data: $data, latitude: $latitude, time: $time}';
+    return 'Event{name: $name, data: $data, time: $time, latitude: $latitude, longitude: $longitude}';
   }
 
 }

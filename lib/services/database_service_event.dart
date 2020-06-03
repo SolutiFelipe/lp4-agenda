@@ -7,12 +7,16 @@ class DatabaseServiceEvent {
   DatabaseServiceEvent({this.uid});
 
   final CollectionReference eventsCollection =
-  Firestore.instance.collection('events');
+      Firestore.instance.collection('events');
 
   Future updateDatabase(Event event) async {
-    await eventsCollection
-        .document(uid)
-        .setData({'name': event.name, 'date':event.data, 'location':event.localizacao, 'time':event.time});
+    await eventsCollection.document(uid).setData({
+      'name': event.name,
+      'date': event.data,
+      'latitude': event.latitude,
+      'longitude': event.longitude,
+      'time': event.time,
+    });
   }
 
   List<Event> _eventsListFromSnapshot(QuerySnapshot snapshot) {
@@ -20,7 +24,8 @@ class DatabaseServiceEvent {
       return Event(
         name: doc.data['name'],
         data: doc.data['date'],
-        localizacao: doc.data['location']
+        latitude: doc.data['latitude'],
+        longitude: doc.data['longitude'],
       );
     }).toList();
   }
